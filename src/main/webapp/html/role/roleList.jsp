@@ -84,9 +84,9 @@
 </div>
 <div class="pageContent">
 	<div id="role" style='height:100%'> 
-		<sui:grid id="roleListGrid" pageId="roleListGrid_page" title=""
-			offsetHeight="290"
-			pkName="id" url="${ctxPath}/role/loadRoleListDataGrid.action"
+		<sui:grid id="roleListGrid" pageId="roleListGrid_page" title=""  
+			offsetHeight="290" 
+			pkName="id" url="${ctxPath}/role/loadRoleListDataGrid.action"  ondblClickRow="roleListCRUD.editRole"
 			addClick="roleListCRUD.addRole" addOperator="role_add" editClick="roleListCRUD.editRole" editOperator="role_edit" 
 			delClick="roleListCRUD.deleteRole" delOperator="role_del"  > 
 			<sui:gridCell name="id" title="" hidden="true" align="center"></sui:gridCell>

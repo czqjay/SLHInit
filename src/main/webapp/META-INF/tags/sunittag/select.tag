@@ -71,12 +71,12 @@
 		}) 
 	    $('#${id}').trigger('reload');
 		<%}%>
-</script> 
+</script>  
 
 
 
 <select  id="${id}" name="${name}" 
-<%if( multiple==null&&multiple.equals("")){out.print(" style=\"display:none\"");}%>
+<%if( multiple==null||multiple.equals("")){out.print(" style=\"display:none\"");}%>
 	<%if( multiple!=null&&!multiple.equals("")){out.print("multiple=\"multiple\"");}%>
 	<%if( size!=null&&!size.equals("")){out.print("size="+size);}%>
 	<%if( style!=null&&!style.equals("")){out.print("style="+style);}%>

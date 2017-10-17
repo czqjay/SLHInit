@@ -73,7 +73,7 @@
  
 	<div id="jobGridDiv" style='height:100%'> 
 		<sui:grid id="jobListGrid" pageId="jobListGrid_page" title=""
-			offsetHeight="290"
+			offsetHeight="290"   ondblClickRow="jobListCRUD.editJob"
 			pkName="id" url="${ctxPath}/job/loadJobListDataGrid.action"
 			addClick="jobListCRUD.addJob" addOperator="job_add" editClick="jobListCRUD.editJob" editOperator="job_edit"
 			delClick="jobListCRUD.deleteJob" delOperator="job_del">

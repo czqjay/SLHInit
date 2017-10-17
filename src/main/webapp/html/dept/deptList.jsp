@@ -103,9 +103,9 @@
 	<div id="deptListGridDiv" style='height:100%'> 
 		<sui:grid id="deptListGrid" pageId="deptListGrid_page" title=""
 			offsetHeight="290"
-			pkName="id" url="${ctxPath}/dept/loadDeptListDataGrid.action"
+			pkName="id" url="${ctxPath}/dept/loadDeptListDataGrid.action" 
 			addClick="deptListCRUD.addDept"  addOperator="depart_add" 
-			editClick="deptListCRUD.editDept"  editOperator="depart_edit"
+			editClick="deptListCRUD.editDept"  editOperator="depart_edit" ondblClickRow="deptListCRUD.editDept"
 			delClick="deptListCRUD.deleteDept" delOperator="depart_del">
 			<sui:gridCell name="id" title="" hidden="true" align="center"></sui:gridCell>
 			<sui:gridCell name="deptno" title="部门编号" align="left" width="150"
