@@ -57,7 +57,7 @@
 
 		<property name="driver" value="com.mysql.jdbc.Driver" />
 		<property name="driverUrl"
-			value="jdbc:mysql://dell-pc/wxsign?useOldAliasMetadataBehavior=true" />
+			value="jdbc:mysql://newvmwaremysql/slhinit?useOldAliasMetadataBehavior=true" />
 		<property name="user" value="root" />
 		<property name="password" value="vo123" />
 

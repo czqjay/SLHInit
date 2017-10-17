@@ -189,10 +189,10 @@ if(g.isCompressActive()){%>
 	src="${ctxPath}/html/js/dynatree-1.2.0_rc1/jquery/jquery.cookie.js"></script> 
 <script type="text/javascript"
 	src="${ctxPath}/html/js/dynatree-1.2.0_rc1/jquery/jquery.dynatree.js"></script> 
-<script type="text/javascript" 
-	src="${ctxPath}/html/js/jquery.contextMenu/jquery.contextMenu-custom.js"></script> 
+<!-- <script type="text/javascript" 
+	src="${ctxPath}/html/js/jquery.contextMenu/jquery.contextMenu-custom.js"></script>  -->
 
-<!--
+<!-- 
 <script src="bin/dwz.min.js" type="text/javascript"></script> 
 -->
 <script src="${ctxPath}/html/js/dwz/js/dwz.regional.zh.js"

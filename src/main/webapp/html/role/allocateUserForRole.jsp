@@ -62,7 +62,7 @@
 		 		var deptname = '';
 		 		for(v in plhs){
 		 		    deptname = plhs[v].data.deptname;
-		 		    if(typeof(deptname)=='undefined'){
+		 		    if(typeof(deptname)=='undefined'){ 
 		 		       id = plhs[v].data.id;
 		 		    
 		 		       if(id.length>0){
@@ -101,7 +101,7 @@
 <div id='SHOWpageLeft' style='float:left;text-align:left;width:200px; height:100%'>
 
 	<sui:tree  id="showDeptTreeFroRole"  checkbox="true" postProcess ="showDeptTreeFroRole.postProcess" 
- 	onDblClick="showDeptTreeFroRole.dblClick"
+ 	onDblClick="showDeptTreeFroRole.dblClick"  postData="root" 
      buttons="{onclick:'showDeptTreeFroRole.fillSels()',id:'saveToSelectForRole',name:'确定',operator:'role_setUser_save'}"  
      onclick="showDeptTreeFroRole.deptClick"  url="${ctxPath}/dept/loadChildren.action" 
 	></sui:tree> 

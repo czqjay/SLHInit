@@ -41,7 +41,7 @@ $(function(){
 			}
 			,
 			addSysResource : function() {
-				suntoolkit.openOptions({title:'资源记录新增',width:650,height:400,resizable:false,zIndex:'auto'},window.WWWROOT + "/sysresource/sysResourceAdd.action")  
+				suntoolkit.openOptions({title:'资源记录新增',width:'90%',height:600,resizable:false,zIndex:'auto'},window.WWWROOT + "/sysresource/sysResourceAdd.action")  
 //				 suntoolkit.getDialogEL().load(window.WWWROOT + "/html/plan/planAdd.jsp",function(){
 //					  suntoolkit.showDialog({title:'考评计划新增',width:700,height:450,resizable:false,zIndex:'auto'}); 
 //					  initUI(suntoolkit.getDialogEL().get(0)); 

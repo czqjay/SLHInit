@@ -105,8 +105,9 @@
 		this.element.width(this.element.parent().width());
 		 
         this.wrapper = $( "<div>" )
-          .addClass( "custom-combobox" )     
-         .insertAfter( this.element )//.css('float','left');       
+//          .addClass( "custom-combobox" ) 
+        .addClass( "row" )
+        .insertAfter( this.element )//.css('float','left');       
  		this.element.attr( "comboid", "combo"+this.element.attr('id')) ;  
         this.element.hide();  
         this.element.bind('setDefault',{id:this.options.id,defaultoption:this.options.defaultoption,value:this.options.value},$.comboSelect.setDefault) ;
@@ -118,9 +119,9 @@
 		if(this.options.dataUrl) 
 			this.element.trigger('reload',{proxy:this})   
 			
-	    if($('#combo'+this.options.id).length==0){  
-			 this._createAutocomplete(); 
-        	 this._createShowAllButton();   
+	    if($('#combo'+this.options.id).length==0){   
+			 this._createAutocomplete();  
+        	 this._createShowAllButton();     
 		}		 
       }, 
       _createAutocomplete: function() {
@@ -136,30 +137,31 @@
  		
         this.input = $( "<input>" ) 
           .appendTo( this.wrapper )   
-          .attr('style','text-align:center;width:'+(this.element.width()-40)+'px')  
-          .val( value )     
+          .attr('style','text-align:center; ')
+          .val( value )      
           .attr( "title", "" ) 
           .attr( "id", "combo"+this.element.attr('id') ) 
-          .addClass( "textInput" )
-          .autocomplete({
+            .addClass( "col-xs-10 " )
+             .addClass( "textInput" )
+          .autocomplete({ 
             delay: 0,
             minLength: 0,
             source: $.proxy( this, "_source" ),
             change: function(){
             	DWZ.debug('change')  
             }
-          });
-          //.tooltip({ 
-           // tooltipClass: "ui-state-highlight" 
-         // }); 
-         //  this.input.attr('style','width:'+(this.element.parent().width()-50)+'px') 
-  
+          }); 
+//    //   .tooltip({ 
+//      //      tooltipClass: "ui-state-highlight" 
+//       //   }); 
+//         //  this.input.attr('style','width:'+(this.element.parent().width()-50)+'px')  
+//  
         this._on( this.input, {
           autocompleteselect: function( event, ui ) {
           DWZ.debug("autocompleteselect")
           ui.item.option.selected = true; 
           this.element.trigger('change') ;   
-          this._trigger( "select", event, {
+          this._trigger( "select", event, { 
               item: ui.item.option, 
               ele:this.element
             });
@@ -175,11 +177,11 @@
           var btn =$('<button></button>')  
           .attr( "tabIndex", -1 )
            .attr( "type", 'button' )
-          .attr( "title", "显示所有" ) 
-          .addClass('myinput')
+          .attr( "title", "显示所有" )  
+          .addClass('col-xs-2') 
           .appendTo( this.wrapper  )
-          .attr( "style", 'width:25px;height:22px;border-radius:0' )  
-          .button({ 
+          .attr( "style", '    float: left;       width: 18px;          height: 18px;' )  
+          .button({  
             icons: { 
               primary: "ui-icon-triangle-1-s" 
             },
@@ -187,55 +189,17 @@
           }).mousedown(function() { 
             wasOpen = input.autocomplete( "widget" ).is( ":visible" );
           })
+           .removeClass('ui-corner-all')
+         
           .click(function() {
             input.focus();
-  
             // Close if already visible
             if ( wasOpen ) {
               return;
             } 
             // Pass empty string as value to search for, displaying all results
            input.autocomplete( "search", "" );
-          });
-          
-          btn.position({ 
-          	 of:this.input, 
-        	 my: 'left center', 
-       		 at: 'right center', 
-       	 	 collision: 'fit none '
-          }) 
-          
-          
-      /**  $( "<a>" )
-          .attr( "tabIndex", -1 )  
-          //.attr( "title", "显示所有" )  
-         // .attr( "style", 'width:18px;height:21px;top:-23px;float:right;right: -16px;' )
-         //.attr( "style", 'display:none' ) 
-          .tooltip()   
-          .appendTo( this.wrapper  ) 
-          .appendTo( $('<span>').appendTo( this.wrapper).addClass('pdiv') )
-          .button({ 
-            icons: {
-              primary: "ui-icon-triangle-1-s"
-            },
-            text: false
-          })
-          .removeClass( "ui-corner-all" )
-          .addClass( "showbtn" )
-          .mousedown(function() { 
-            wasOpen = input.autocomplete( "widget" ).is( ":visible" );
-          })
-          .click(function() {
-            input.focus();
- 
-            // Close if already visible
-            if ( wasOpen ) {
-              return;
-            }
-            // Pass empty string as value to search for, displaying all results
-            input.autocomplete( "search", "" );
-          });
-          */
+          }) ;
       },
       _source: function( request, response ) {
         var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
