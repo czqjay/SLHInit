@@ -381,7 +381,7 @@ public class MVCAction extends BaseAction {
 	}
 
 	@RequestMapping("/loadChildren.action")
-	public void getTreeMenu(PrintWriter pw, String id,
+	public void loadChildren(PrintWriter pw, String id,
 			HttpServletRequest request) {
 
 		String treeArgs = request.getParameter("postData");
@@ -415,6 +415,40 @@ public class MVCAction extends BaseAction {
 		}
 	}
 
+	
+	
+	@RequestMapping("/loadMenuChildren.action")
+	public void loadMenuChildren(PrintWriter pw, HttpServletRequest request,String id) {  
+
+		String treeArgs = request.getParameter("postData");
+	 
+			List authorityList = (List) SessionContext.getAttribute(request,
+					"authorityList");
+			List list = new ArrayList();
+			SysResource sr = new SysResource();  
+			sr.setParent(id);
+			for (SysResource s : sm.findByExample(sr)) {
+				if (!authorityList.contains(s.getContent()))
+					continue;
+				Map map = new HashMap();
+				map.put("title", s.getModuleCaption());
+				map.put("url", s.getContent());
+				map.put("id", s.getId()); 
+				map.put("sourceType", s.getSourceType()); 
+				list.add(map); 
+//				data[v].title=data[v].moduleCaption  ; 
+//    			data[v].key=data[v].id; 
+//    			data[v].id=data[v].id;
+//    			data[v].sourceType=data[v].sourceType;
+//    			data[v].url=data[v].getContent;
+				
+				
+			}
+			pw.write(JSONArray.fromObject(list).toString());
+	}
+	
+	
+	
 	@RequestMapping("/getSelectBody.action")
 	public String getSelectBody(PrintWriter pw, String id,
 			HttpServletRequest request, HttpServletRequest response) {

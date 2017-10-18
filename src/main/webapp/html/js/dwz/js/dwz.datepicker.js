@@ -167,7 +167,7 @@
 				var dw = dp.getDateWrap();
 				var $year = $(setting.year$);
 				var yearstart = dw.year+parseInt(dp.get("yearstart"));
-				var yearend = dw.year+parseInt(dp.get("yearend"));
+				var yearend = dw.year+parseInt(dp.get("yearend")); 
 				for(y=yearstart; y<=yearend; y++){
 					$year.append('<option value="'+ y +'"'+ (dw.year==y ? 'selected="selected"' : '') +'>'+ y +'</option>');
 				}
@@ -241,7 +241,14 @@
 		},
 
 		getDateWrap: function(date){ //得到年,月,日
+		DWZ.debug('getDateWrap')
+		DWZ.debug(arguments)
 			if (!date) date = this.parseDate(this.sDate) || new Date();
+		DWZ.debug(date)	
+		
+		if(this.sDate=="")
+			date=new Date();
+			 
 			var y = date.getFullYear();
 			var m = date.getMonth()+1;
 			var days = this._getDays(y,m);

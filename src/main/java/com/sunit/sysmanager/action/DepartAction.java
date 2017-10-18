@@ -524,17 +524,17 @@ public class DepartAction extends BaseAction {
 
 		/**
 		 * 
-		* @Title: getTreeMenu 
+		* @Title: loadChildren 
 		* @Description: 部门树的数据提供者
 		* @param @param pw
 		* @param @param id     
 		* @return void  
 		* @throws 
 		* @author joye 
-		* Aug 1, 2013 3:06:37 PM
+		* Aug 1, 2013 3:06:37 PM 
 		 */
-		@RequestMapping("/loadChildren.action")
-		public void getTreeMenu(PrintWriter pw, String id,HttpServletRequest request) {
+		@RequestMapping("/loadChildren.action") 
+		public void loadChildren(PrintWriter pw, String id,HttpServletRequest request) {
 			logger.debug("DepartAction.getTreeMenu()");
 			String reString;
 			if (!StringUtils.isBlank(id))

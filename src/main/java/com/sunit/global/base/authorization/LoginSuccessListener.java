@@ -51,6 +51,9 @@ public class LoginSuccessListener implements
 		List allButtonResourceList = new ArrayList(); // 所有可访问按钮
 		List<Map> planManagerRootMeunList = new ArrayList(); // 计划管理菜单根节点
 		List<Map> systemManagerRootMeunList = new ArrayList(); // 系统管理菜单根节点
+		
+		List<SysResource> accordionList=new ArrayList();  //首页可折叠菜单的数据源
+		
 		u.setAccountName(arg0.getAuthentication().getName());
 		u.setFlag("1");
 		List list = um.findByExample(u);
@@ -71,7 +74,8 @@ public class LoginSuccessListener implements
 				List<SysResource> resourceslist =null;
 				if(isAdmin){ 
 					roleList.clear(); 
-					resourceslist=sm.getAll();
+//					resourceslist=sm.getAll();
+					resourceslist = sm.find("from SysResource order by orderNum  ");
 				} else{
 					resourceslist = role.getSysResources(); 
 				} 
@@ -87,6 +91,9 @@ public class LoginSuccessListener implements
 					}
 					allButtonResourceList.add(sysResource.getCode());
 					if (sysResource.getSourceType().equals("2")) { // 是否菜单树根节点类型
+						if(sysResource.getParent().equals("0")) { // 顶级根节点
+							accordionList.add(sysResource);
+						}
 						boolean isRepeatMenu = false; // 是否存在相同的节点
 						for (Map m : planManagerRootMeunList) {
 							if (m.containsValue(sysResource.getId()))
@@ -119,7 +126,9 @@ public class LoginSuccessListener implements
 				}
 			}
 		}
-		
+		((SecurityContextImpl) SecurityContextHolder.getContext()).getRequest()
+		.getSession().setAttribute("accordionList",
+				accordionList);
 		
 		((SecurityContextImpl) SecurityContextHolder.getContext()).getRequest()
 				.getSession().setAttribute("systemManagerRootMeunList",
