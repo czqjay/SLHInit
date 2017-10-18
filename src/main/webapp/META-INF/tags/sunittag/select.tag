@@ -71,7 +71,7 @@
 		}) 
 	    $('#${id}').trigger('reload');
 		<%}%>
-</script>  
+</script> 
 
 
 <select  id="${id}" name="${name}" 
