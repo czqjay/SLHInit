@@ -56,13 +56,13 @@ public class SysResourceItemAction extends BaseAction {
 			if (id.equals("root")) {
 				//获取菜单根资源
 				List<SysResource> list = sysResourceManager
-						.find("from SysResource where parent=? and sourceType in (2,3) order by moduleCaption desc","0"); 
+						.find("from SysResource where parent=? and sourceType<>? order by moduleCaption desc","0","4");
 				JsonConfig jc = new JsonConfig();
 				//过滤，保留资源名称和id
 				jc.setJsonPropertyFilter(new PropertyFilter() {
 					public boolean apply(Object source, String name,
 							Object value) {
-						if (name.equals("moduleCaption") || name.equals("id")|| name.equals("sourceType"))
+						if (name.equals("moduleCaption") || name.equals("id"))
 							return false;
 						else
 							return true;
@@ -76,16 +76,16 @@ public class SysResourceItemAction extends BaseAction {
 				jc.setJsonPropertyFilter(new PropertyFilter() {
 					public boolean apply(Object source, String name,
 							Object value) {
-						if (name.equals("moduleCaption") || name.equals("moduleCaption") || name.equals("sourceType")
-								|| name.equals("id")) 
+						if (name.equals("moduleCaption") || name.equals("moduleCaption")
+								|| name.equals("id"))
 							return false;
 						else
 							return true;
 					}
 				});
- 
+
 				//查询菜单节点资源
-				List<SysResource> childSysResourceList =sysResourceManager.find("from SysResource where parent=? and sourceType  in (2,3)", id) ;
+				List<SysResource> childSysResourceList =sysResourceManager.find("from SysResource where parent=? and sourceType<>?", id,"4") ;
 				List<SysResource> list = new ArrayList<SysResource>();
 				for (SysResource srs : childSysResourceList) {
 						list.add(srs);

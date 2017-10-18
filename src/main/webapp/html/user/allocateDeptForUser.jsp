@@ -119,7 +119,7 @@ var deptTreeForDept;
  <body> 
 <div id='pageLeftForDept' style='float:left;text-align:left;width:300px; height:100%'>
   
-<sui:tree  id="deptAddSelectUsers"  selectmode="1"  checkbox="true" postProcess ="deptTreeForDept.postProcess"  postData="root"
+<sui:tree  id="deptAddSelectUsers"  selectmode="1"  checkbox="true" postProcess ="deptTreeForDept.postProcess" 
  	onDblClick="deptTreeForDept.dblClick"  onclick="deptTreeForDept.deptClick"  url="${ctxPath}/dept/loadChildrenOnlyDepart.action" 
 								></sui:tree> 
 </div>  

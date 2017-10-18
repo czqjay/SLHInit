@@ -132,7 +132,6 @@ create table tb_sysresource
    CODE                 VARCHAR(200) not null comment 'CODE',
    SOURCE_TYPE          INTEGER default 0 comment '0:页面 1:按钮 2: 树菜单根 3树菜单节点',
    genFlag              VARCHAR(1000),
-   orderNum             int,
    remark               VARCHAR(3000),
    primary key (ID)
 );

@@ -16,7 +16,6 @@ import net.sf.json.JsonConfig;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.deser.std.StdDeserializer.LongDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -215,35 +214,6 @@ public class SysResourceAction extends BaseAction{
 		request.setAttribute("sysResource_list", sysResource_list);
 		return "sysresource/sysResourceUpdate";
 	}
-	
-	/**
-	 * 通过id获取
-	 * @param pw
-	 * @param id
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	@RequestMapping("/getSysResource.action")
-	public void getSysResource(PrintWriter pw, String id, HttpServletRequest request,
-			HttpServletRequest response) {
-		logger.debug("SysResourceAction.getSysResource()");
-		Map map = new HashMap();
-		map.put("success", false);
-		try {
-			
-			if (!StringUtils.isBlank(id)) {
-				SysResource sr =sysresourceManager.get(id);	
-				map.put("data", sr);
-			}
-			map.put("success", true);
-		} catch (Exception e) {
-			map.put("msg", e.getMessage());
-			logger.error("获取资源时发生错误", e);
-		}
-		pw.print(JSONObject.fromObject(map).toString());
-	}
-		
 
 	
 	/**
@@ -276,19 +246,15 @@ public class SysResourceAction extends BaseAction{
 					SysResource sr =sysresourceManager.get(sysResource.getId());	
 					SunitBeanUtils.copyProperties(sysResource, sr);
 					sysresourceManager.save(sr);
-					map.put("sysResource", sr);
 				}else{
-					actionErrType = "新增资源记录"; 
-					sysResource.setId(null);
-					sysresourceManager.save(sysResource);	 
-					map.put("sysResource", sysResource);
+					actionErrType = "新增资源记录";
+					sysresourceManager.save(sysResource);	
 				}
 				map.put("success", true);
 			} catch (Exception e) {
 				map.put("msg", e.getMessage());
 				logger.error(actionErrType, e);
 			}
-			
 			pw.print(JSONObject.fromObject(map).toString());
 			return null;
 		}

@@ -221,28 +221,19 @@ $(function(){
 					//event.preventDefault();  
 		 	},
 		 	postProcess: function(data,dataType){  //后处理 ajax结果的拦截处理
-		 		log('postProcess: function(data,dataType)')
-		 		log(arguments)
 	        	for(v in data){
-	        		if(data[v].sourceType=='2'){ 
-	        			data[v].isFolder=true  ;
-	        			data[v].isLazy=true ;
-	        			data[v].expand=false   ;
-	        			data[v].title=data[v].title;
-	        			data[v].key=data[v].id;
-	        			data[v].id=data[v].id;
-	        			data[v].sourceType=data[v].sourceType; 
-	        			
+	        		if(data[v].caption){ 
+	        			data[v].isFolder=true 
+	        			data[v].isLazy=true 
+	        			data[v].expand=false   
+	        			data[v].title=data[v].caption
 	        		//	data[v].noLink=true   
-	        		}else{
-	        			data[v].isFolder=false;
-	        			data[v].isLazy=false ;
-	        			data[v].expand=false   ;
-	        			data[v].title=data[v].title  ; 
-	        			data[v].key=data[v].id; 
-	        			data[v].id=data[v].id;
-	        			data[v].sourceType=data[v].sourceType;
-	        			data[v].url=data[v].url;
+	        		} 
+	        		if(data[v].url){  
+	        			data[v].isFolder=false
+	        			data[v].isLazy=false 
+	        			data[v].expand=false   
+	        			data[v].title=data[v].title  
 	        			//data[v].noLink=true    
 	        		} 
 	        	} 
@@ -250,9 +241,7 @@ $(function(){
         	} 
 		}
 		
-		log=function(msg){
-			DWZ.debug(msg) 
-	}
+		
 		
 }); 
 
@@ -332,25 +321,25 @@ $(function(){
 
 
 					<div id="accordion">
-					
-						
-				<c:forEach var="sysResource" items="${accordionList}" varStatus="status"> 
-         		<h3> 
-							${sysResource.moduleCaption}  
+						<h3>
+							业务管理
 						</h3> 
 						<div >
-								   
-					<sui:tree  id="mainTree_${sysResource.id}"  
-					postData="${sysResource.id}" 
-					 postProcess ="indexMainTree.postProcess" 
- 						 onclick="indexMainTree.deptClick"  url="${ctxPath}/base/loadMenuChildren.action" 
+						  
+								  
+					<sui:tree  id="mainTreeForPlan" postData="planManager"  postProcess ="indexMainTree.postProcess" 
+ 						 onclick="indexMainTree.deptClick"  url="${ctxPath}/base/loadChildren.action" 
 								></sui:tree> 
  
 						</div>
-		</c:forEach>
-			 
-						
-					
+						<h3>
+							系统管理
+						</h3>
+						<div>
+				<sui:tree  id="mainTreeForSystem" postData="systemManager"  postProcess ="indexMainTree.postProcess" 
+ 						 onclick="indexMainTree.deptClick"  url="${ctxPath}/base/loadChildren.action" 
+								></sui:tree> 
+						</div>
 					</div> 
 
 				</div>

@@ -111,7 +111,7 @@
 		<sui:grid id="userListGrid" pageId="userListGrid_page" title=""
 			offsetHeight="290"                                
 			pkName="id" url="${ctxPath}/user/loadUserListDataGrid.action"
-			onready="userListCRUD.setGrid" rownumber="20"   ondblClickRow="userListCRUD.editUser"
+			onready="userListCRUD.setGrid" rownumber="20" 
 			addClick="userListCRUD.addUser" addOperator="user_add" editClick="userListCRUD.editUser" editOperator="user_edit"
 			delClick="userListCRUD.deleteUser" delOperator="user_del" >
 			<sui:gridCell name="id" title="" hidden="true" align="center"></sui:gridCell>

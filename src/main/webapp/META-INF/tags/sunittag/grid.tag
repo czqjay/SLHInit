@@ -51,10 +51,8 @@
 <%@ attribute name="successFunc" type="java.lang.String" required="false"%>     <%--已废弃  --%> 
 <%@ attribute name="formValidate" type="java.lang.String" required="false"%> <%-- 当为可编辑时,form数据的check方法 --%>
 
-<%@ attribute name="ondblClickRow" type="java.lang.String" required="false"%> <%-- 当为可编辑时,form数据的check方法 --%>
 
-
-   
+  
 
 
  
@@ -180,9 +178,6 @@ $(function(){
 		width:"auto",  
 		shrinkToFit:true,
 		forceFit:true, 
-		<c:if test="${hasEditOperator}"> 
-		<c:if test="${!empty ondblClickRow}">ondblClickRow:${ondblClickRow},</c:if> 
-		 </c:if>
 		//hidegrid:false, 
  		//toolbar:[true,"top"],
  		autowidth:true 

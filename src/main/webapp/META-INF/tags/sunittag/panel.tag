@@ -13,7 +13,6 @@
 <%@ attribute name="paddingRight" type="java.lang.String" required="false"  %> <%--  css 的 paddingRight 属性--%>
 <%@ attribute name="style" type="java.lang.String" required="false"  %> <%--  css --%>
 <%@ attribute name="height" type="java.lang.String" required="false"  %><%--  高度--%>
-<%@ attribute name="styleClass" type="java.lang.String" required="false"  %><%--  高度--%>
 
 <c:if test="${!empty height}">
 	<c:set var="height" value="overflow:auto;height:${height}px;" />
@@ -53,10 +52,10 @@
 <c:if test="${!empty paddingLeft}">
 	<c:set var="paddingLeft" value="padding-left:${paddingLeft}px;"/>
 </c:if>
-<c:if test="${!empty paddingRight}"> 
+<c:if test="${!empty paddingRight}">
 	<c:set var="paddingRight" value="padding-right:${paddingRight}px;"/>
 </c:if>
-<div class="ui-field  ${styleClass}" style="${paddingLeft}${paddingRight}${style}">
+<div class="ui-field" style="${paddingLeft}${paddingRight}${style}">
 	<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
 		<div id="${id}" class="ui-inputBody ${fullscreen}" offset="${offset}" style="${height}">
 			${title}

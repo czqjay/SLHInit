@@ -71,24 +71,20 @@
 		}) 
 	    $('#${id}').trigger('reload');
 		<%}%>
-</script>  
-
-
-
-<select  id="${id}" name="${name}" 
-<%if( multiple==null||multiple.equals("")){out.print(" style=\"display:none\"");}%>
+</script> 
+<select  id="${id}" name="${name}"
 	<%if( multiple!=null&&!multiple.equals("")){out.print("multiple=\"multiple\"");}%>
 	<%if( size!=null&&!size.equals("")){out.print("size="+size);}%>
 	<%if( style!=null&&!style.equals("")){out.print("style="+style);}%>
 	<%if( required!=null&&!required.equals("")){out.print("required=true");}%>
 	<%if(!StringUtils.isBlank(attrs)){
 		JSONObject jsonobj  = JSONObject.fromObject(attrs.replaceAll("'","\"")); 
-		Set set = jsonobj.keySet(); 
-//		for (Object o : set) { 
-//			out.print(" ");
-//			out.print(o.toString()+"='"+jsonobj.get(o.toString())+"'");
-//			out.print(" "); 
-//		} 
+		Set set = jsonobj.keySet();
+		for (Object o : set) { 
+			out.print(" ");
+			out.print(o.toString()+"='"+jsonobj.get(o.toString())+"'");
+			out.print(" "); 
+		}
 	} %>
 	
 	

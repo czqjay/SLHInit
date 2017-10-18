@@ -36,9 +36,6 @@ public class SysResource implements java.io.Serializable{
 	private String code; //资源的唯一标识code
 	@Column(name = "source_Type")
 	private String sourceType; 
-	 
-	
-	private String orderNum;  //排序
 	
 	
 	
@@ -107,13 +104,6 @@ public class SysResource implements java.io.Serializable{
 		return sourceType;
 	}
 	public void setSourceType(String sourceType) {
-		this.sourceType = sourceType; 
+		this.sourceType = sourceType;
 	}
-	public String getOrderNum() {
-		return orderNum;
-	}
-	public void setOrderNum(String orderNum) {
-		this.orderNum = orderNum;
-	}
-	
 }

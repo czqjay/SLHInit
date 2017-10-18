@@ -39,7 +39,7 @@ public class Role implements java.io.Serializable{
    
 	
 	@Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	@OrderBy(value="orderNum")
+	@OrderBy(value="id")
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "role_sysresource", joinColumns = { @JoinColumn(name = "roleid") }, inverseJoinColumns = { @JoinColumn(name = "SYSRESOURCEID") })
 	private List<SysResource> sysResources; //角色中资源

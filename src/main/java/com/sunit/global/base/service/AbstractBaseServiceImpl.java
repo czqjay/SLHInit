@@ -7,13 +7,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import org.springframework.dao.DataAccessException;
@@ -53,20 +50,8 @@ public abstract class AbstractBaseServiceImpl<T> implements BaseService<T> {
 		getDao().getHibernateTemplate().deleteAll(list);
 	}
 
-	public List<T> getAll() { 
+	public List<T> getAll() {
 
-//		return getDao().getHibernateTemplate().executeWithNativeSession(new HibernateCallback<List<T>>() {
-//			@SuppressWarnings("unchecked")
-//			public List<T> doInHibernate(Session session) throws HibernateException {
-//				Criteria criteria = session.createCriteria(entityClass);
-//				criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-//				criteria.add((Criterion) Order.asc("orderNum"));
-//				return criteria.list();
-//			}
-//		});  
-		
-		
-		
 		return getDao().getHibernateTemplate().loadAll(entityClass);
 	}
 

@@ -86,7 +86,7 @@
 <div class="pageContent">
 	<div id="sysResource" style='height:100%'> 
 		<sui:grid id="sysResourceListGrid" pageId="sysResourceListGrid_page" title=""
-			offsetHeight="290"   ondblClickRow="sysResourceListCRUD.editSysResource"
+			offsetHeight="290"
 			pkName="id" url="${ctxPath}/sysresource/loadSysResourceListDataGrid.action"
 			addClick="sysResourceListCRUD.addSysResource" editClick="sysResourceListCRUD.editSysResource"
 			delClick="sysResourceListCRUD.deleteSysResource" > 
